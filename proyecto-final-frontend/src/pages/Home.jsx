@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
 import { Layout } from "../components/Layout"
+import { useAuth } from "../context/UserContext"
 
 const Home = () => {
   const [products, setProducts] = useState([])
-  // simulando existencia del usuario, proximamente este estado será global
-  const [user, setUser] = useState(true)
   const [showPopup, setShowPopup] = useState(null)
   const [productToEdit, setProductToEdit] = useState(null)
   const [titleEdit, setTitleEdit] = useState("")
@@ -13,6 +12,8 @@ const Home = () => {
   const [categoryEdit, setCategoryEdit] = useState("")
   const [imageEdit, setImageEdit] = useState("")
 
+  // simulando existencia del usuario, proximamente este estado será global
+  const { user } = useAuth()
 
   const fetchingProducts = async () => {
     const response = await fetch("https://fakestoreapi.com/products", { method: "GET" })
