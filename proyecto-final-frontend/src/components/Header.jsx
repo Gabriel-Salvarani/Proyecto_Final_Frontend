@@ -7,9 +7,14 @@ const Header = () => {
 
   const handleLogout = () => {
     logout()
+    document.body.classList.remove("open") 
   }
 
   const toggleMenu = () => document.body.classList.toggle("open")
+
+  const closeMenu = () => {
+    document.body.classList.remove("open")
+  }
 
   return (
     <header className="main-header">
@@ -39,14 +44,14 @@ const Header = () => {
             <ul className="nav-list">
               {user ? (
                 <>
-                  <li><Link to="/">Inicio</Link></li>
-                  <li><Link to="/dashboard">Dashboard</Link></li>
+                  <li><Link to="/" onClick={closeMenu}>Inicio</Link></li>
+                  <li><Link to="/dashboard" onClick={closeMenu}>Dashboard</Link></li>
                   <li><button onClick={handleLogout} className="logout-btn">Cerrar sesión</button></li>
                 </>
               ) : (
                 <>
-                  <li><Link to="/login">Inicia Sesión</Link></li>
-                  <li><Link to="/registrate">Registrate</Link></li>
+                  <li><Link to="/login" onClick={closeMenu}>Inicia Sesión</Link></li>
+                  <li><Link to="/registrate" onClick={closeMenu}>Registrate</Link></li>
                 </>
               )}
             </ul>
