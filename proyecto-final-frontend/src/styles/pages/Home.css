@@ -1,0 +1,182 @@
+/* Estilo del contenedor principal */
+.main-container {
+    background-color: #1a1a2e; 
+    color: #ffffff; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    padding: 2rem;
+}
+
+/* Estilos para las secciones de contenido */
+.main-section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    border-radius: 8px; 
+    background-color: #162033; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+}
+
+/* Estilos de los títulos */
+.main-section h1, .main-section h2 {
+    color: #6a1b9a; 
+    border-bottom: 2px solid #6a1b9a; 
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+/* Estilos para los listados*/
+.why-choose-us ul {
+    list-style: none; 
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 2rem; 
+}
+
+.why-choose-us li {
+    background-color: #1f2b45; 
+    padding: 1.5rem;
+    border-radius: 8px;
+    flex: 1 1 300px; 
+}
+
+.why-choose-us h3 {
+    color: #b39ddb; 
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos para la cuadrícula de productos */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); 
+    gap: 2rem; 
+}
+
+.product-card {
+    background-color: #1f2b45;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.product-card img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.product-card p {
+    color: #e0e0e0;
+}
+
+.product-card button {
+    background-color: #6a1b9a;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.product-card button:hover {
+    background-color: #8e24aa;
+}
+
+/* Estilos para el popup de edición */
+.popup-edit {
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1f2b45; 
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    width: 90%;
+    max-width: 500px;
+}
+
+.popup-edit h2 {
+    color: #6a1b9a;
+    border-bottom: 2px solid #6a1b9a;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+
+.popup-edit input, .popup-edit textarea {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: 1px solid #6a1b9a;
+    background-color: #2b3a5b;
+    color: white;
+    font-size: 1rem;
+}
+.popup-edit input::placeholder,
+.popup-edit textarea::placeholder {
+    color: #a0a0a0; /* Color gris claro */
+}
+
+/* Estilo para cuando el campo está enfocado */
+.popup-edit input:focus,
+.popup-edit textarea:focus {
+    outline: none; /* Quitamos el contorno por defecto del navegador */
+    border-color: #8e24aa; /* Borde más claro al enfocar */
+    box-shadow: 0 0 5px #8e24aa; /* Sombra sutil al enfocar */
+}
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea los botones a la derecha */
+    gap: 10px; /* Espacio entre los botones */
+    margin-top: 1.5rem; /* Espacio arriba del contenedor */
+}
+
+/* Estilo para los botones */
+.popup-edit button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+/* Estilo específico para el botón de cerrar */
+.popup-edit .close-button {
+    background-color: #d32f2f; /* Un rojo para el botón de cerrar */
+    color: #ffffff;
+    border: none;
+}
+
+.popup-edit .close-button:hover {
+    background-color: #e53935;
+}
+
+/* Estilo para el botón de actualizar */
+.popup-edit .update-button {
+    background-color: #6a1b9a; /* El púrpura de la marca */
+    color: #ffffff;
+    border: none;
+}
+
+.popup-edit .update-button:hover {
+    background-color: #8e24aa;
+}
+textarea {
+    scrollbar-width: thin; /* Estilo 'thin' para una barra de desplazamiento más delgada */
+    scrollbar-color: #6a1b9a #1f2b45; /* Color del "thumb" y del "track" */
+}

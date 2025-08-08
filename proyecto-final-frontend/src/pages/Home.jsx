@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Layout } from "../components/Layout"
 import { useAuth } from "../context/UserContext"
+import "../styles/pages/Home.css"
 
 const Home = () => {
   const [products, setProducts] = useState([])
@@ -11,6 +12,8 @@ const Home = () => {
   const [descriptionEdit, setDescriptionEdit] = useState("")
   const [categoryEdit, setCategoryEdit] = useState("")
   const [imageEdit, setImageEdit] = useState("")
+  const [isUpdating, setIsUpdating] = useState(false);
+
 
   // simulando existencia del usuario, proximamente este estado será global
   const { user } = useAuth()
@@ -85,93 +88,79 @@ const Home = () => {
 
   return (
     <Layout>
-      <section>
-        <h1>Bienvenido a Nuestra Tienda</h1>
-        <p>Descubrí una selección exclusiva de productos para vos. Calidad, confianza y atención personalizada.</p>
-      </section>
+        <div className="main-container">
+            <section className="main-section"> 
+                <h1>Bienvenido a Nuestra Tienda</h1>
+                <p>Descubrí una selección exclusiva de productos para vos. Calidad, confianza y atención personalizada.</p>
+            </section>
 
-      <section>
-        <h2>¿Por qué elegirnos?</h2>
-        <ul>
-          <li>
-            <h3>Envíos a todo el país</h3>
-            <p>Recibí tu compra en la puerta de tu casa estés donde estés.</p>
-          </li>
-          <li>
-            <h3>Pagos seguros</h3>
-            <p>Trabajamos con plataformas que garantizan tu seguridad.</p>
-          </li>
-          <li>
-            <h3>Atención personalizada</h3>
-            <p>Estamos disponibles para ayudarte en todo momento.</p>
-          </li>
-        </ul>
-      </section>
+            <section className="main-section why-choose-us">
+                <h2>¿Por qué elegirnos?</h2>
+                <ul>
+                    <li>
+                        <h3>Envíos a todo el país</h3>
+                        <p>Recibí tu compra en la puerta de tu casa estés donde estés.</p>
+                    </li>
+                    <li>
+                        <h3>Pagos seguros</h3>
+                        <p>Trabajamos con plataformas que garantizan tu seguridad.</p>
+                    </li>
+                    <li>
+                        <h3>Atención personalizada</h3>
+                        <p>Estamos disponibles para ayudarte en todo momento.</p>
+                    </li>
+                </ul>
+            </section>
 
-      <section>
-        <h2>Nuestros productos</h2>
-        <p>Elegí entre nuestras categorías más populares.</p>
+            <section className="main-section"> 
+                <h2>Nuestros productos</h2>
+                <p>Elegí entre nuestras categorías más populares.</p>
 
+                {
+                    showPopup && (
+                        <section className="popup-edit">
+                            <h2>Editando producto.</h2>
+                          <form onSubmit={handleUpdate}>
+                            <input type="text" placeholder="Ingrese el titulo" value={titleEdit} onChange={(e) => setTitleEdit(e.target.value)}/>
+                            <input type="number" placeholder="Ingrese el precio" value={priceEdit} onChange={(e) => setPriceEdit(e.target.value)}/>
+                            <textarea placeholder="Ingrese la descripción" value={descriptionEdit} onChange={(e) => setDescriptionEdit(e.target.value)}></textarea>
+                            <input type="text" placeholder="Ingrese la categoria" value={categoryEdit} onChange={(e) => setCategoryEdit(e.target.value)}/>
+                            <input type="text" placeholder="Ingrese la URL de la imagen" value={imageEdit} onChange={(e) => setImageEdit(e.target.value)}/>
+                            <div className="button-container">
+                              <button className="close-button" onClick={() => setShowPopup(null)}>Cerrar</button>
+                              <button className="update-button">Actualizar</button>
+                            </div>
+                          </form>
+                        </section>
+                    )
+                }
 
-        {
-          showPopup && <section className="popup-edit">
-            <h2>Editando producto.</h2>
-            <button onClick={() => setShowPopup(null)}>Cerrar</button>
-            <form onSubmit={handleUpdate}>
-              <input
-                type="text"
-                placeholder="Ingrese el titulo"
-                value={titleEdit}
-                onChange={(e) => setTitleEdit(e.target.value)}
-              />
-              <input
-                type="number"
-                placeholder="Ingrese el precio"
-                value={priceEdit}
-                onChange={(e) => setPriceEdit(e.target.value)}
-              />
-              <textarea
-                placeholder="Ingrese la descripción"
-                value={descriptionEdit}
-                onChange={(e) => setDescriptionEdit(e.target.value)}
-              ></textarea>
-              <input
-                type="text"
-                placeholder="Ingrese la categoria"
-                value={categoryEdit}
-                onChange={(e) => setCategoryEdit(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Ingrese la URL de la imagen"
-                value={imageEdit}
-                onChange={(e) => setImageEdit(e.target.value)}
-              />
-              <button>Actualizar</button>
-            </form>
-          </section>
-        }
-
-        <div>
-          {
-            products.map((product) => <div key={product.id}>
-              <h2 key={product.id}>{product.title}</h2>
-              <img width="80px" src={product.image} alt={`Imagen de ${product.title}`} />
-              <p>${product.price}</p>
-              <p>{product.description}</p>
-              <p><strong>{product.category}</strong></p>
-              {
-                user && <div>
-                  <button onClick={() => handleOpenEdit(product)}>Actualizar</button>
-                  <button onClick={() => handleDelete(product.id)}>Borrar</button>
+                <div className="products-grid"> {/* Grid de productos */}
+                    {
+                        products.map((product) => (
+                            <div key={product.id} className="product-card"> {/* Tarjeta de producto */}
+                                <h2 key={product.id}>{product.title}</h2>
+                                <img src={product.image} alt={`Imagen de ${product.title}`} />
+                                <p>${product.price}</p>
+                                <p>{product.description}</p>
+                                <p><strong>{product.category}</strong></p>
+                                {
+                                    user && (
+                                        <div>
+                                            <button onClick={() => handleOpenEdit(product)}>Actualizar</button>
+                                            <button onClick={() => handleDelete(product.id)}>Borrar</button>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                        ))
+                    }
                 </div>
-              }
-            </div>)
-          }
+            </section>
         </div>
-      </section>
     </Layout>
-  )
+)
+// ... (el resto de tu código)
 }
 
 export { Home }

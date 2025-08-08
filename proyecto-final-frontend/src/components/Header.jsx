@@ -25,8 +25,8 @@ const Header = () => {
             {user ? (
               <>
                 <li><Link to="/">Inicio</Link></li>
-                <li><Link to="/dashboard">Dashboard</Link></li>
-                <li><button onClick={handleLogout} className="logout-btn">Cerrar sesión</button></li>
+                <li><Link to="/dashboard">Panel</Link></li>
+                <li><button onClick={handleLogout} className="logout-btn">Salir</button></li>
               </>
             ) : (
               <>
@@ -37,6 +37,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="menu-responsive">
+          <img src={logo} alt="imagen de logo" className="logo"/>
           <button className="burger" onClick={toggleMenu}>
             <span className="burger-icon"></span>
           </button>
@@ -45,8 +46,8 @@ const Header = () => {
               {user ? (
                 <>
                   <li><Link to="/" onClick={closeMenu}>Inicio</Link></li>
-                  <li><Link to="/dashboard" onClick={closeMenu}>Dashboard</Link></li>
-                  <li><button onClick={handleLogout} className="logout-btn">Cerrar sesión</button></li>
+                  <li><Link to="/dashboard" onClick={closeMenu}>Panel</Link></li>
+                  <li><button onClick={handleLogout} className="logout-btn">Salir</button></li>
                 </>
               ) : (
                 <>
