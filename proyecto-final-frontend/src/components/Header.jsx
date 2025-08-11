@@ -20,7 +20,7 @@ const Header = () => {
     <header className="main-header">
       <nav className="navbar">
         <div className="menu-monitor">
-          <img src={logo} alt="imagen de logo" className="logo"/>
+          <h1 className="logo">Mi Tienda</h1>
           <ul className="nav-list">
             {user ? (
               <>
@@ -37,7 +37,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="menu-responsive">
-          <img src={logo} alt="imagen de logo" className="logo"/>
+          <h1 className="logo">Mi Tienda</h1>
           <button className="burger" onClick={toggleMenu}>
             <span className="burger-icon"></span>
           </button>

@@ -51,11 +51,23 @@ body{
 }
 
 .logo {
-  width:  60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
+  font-family: 'Montserrat', sans-serif; /* O la fuente que uses en tu web */
+  font-size: 2rem; /* Tamaño de fuente, ajústalo según necesites */
+  font-weight: 700;
+  text-transform: uppercase;
+  
+  /* Gradiente de color */
+  background: linear-gradient(to right, #6a1b9a, #8e24aa, #b39ddb);
+  
+  /* Para que el texto use el gradiente como relleno */
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+  /* Hacemos el texto transparente para que solo se vea el gradiente */
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* Fallback para navegadores que no lo soporten */
 }
+
 .menu-responsive {
   display: none;
 }
@@ -285,5 +297,4 @@ body.open .burger-icon::after {
   .logout-btn:focus {
     outline: none;
   }
-}
 }
