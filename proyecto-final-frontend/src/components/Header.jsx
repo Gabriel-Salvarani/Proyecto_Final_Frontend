@@ -30,6 +30,8 @@ const Header = () => {
               </>
             ) : (
               <>
+                <li><Link to="/">Inicio</Link></li>
+                <li><Link to="/aboutus">Sobre Nosotros</Link></li>
                 <li><Link to="/login">Inicia Sesión</Link></li>
                 <li><Link to="/registrate">Registrate</Link></li>
               </>
@@ -51,6 +53,7 @@ const Header = () => {
                 </>
               ) : (
                 <>
+                  <li><Link to="/">Inicio</Link></li>
                   <li><Link to="/login" onClick={closeMenu}>Inicia Sesión</Link></li>
                   <li><Link to="/registrate" onClick={closeMenu}>Registrate</Link></li>
                 </>
