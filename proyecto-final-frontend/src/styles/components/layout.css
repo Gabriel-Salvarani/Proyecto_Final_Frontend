@@ -1,0 +1,29 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+.main-content {
+  flex: 1;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+/* src/styles/layout.css */
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1; /* Esto empujará el footer hacia abajo */
+  display: flex;
+  justify-content: center; /* Centra el contenido del login horizontalmente */
+  align-items: center; /* Centra el contenido del login verticalmente */
+  padding: 20px; /* Agrega un padding para que el contenido no se pegue a los bordes */
+}
