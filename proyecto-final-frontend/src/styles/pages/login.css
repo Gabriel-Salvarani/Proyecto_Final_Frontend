@@ -153,12 +153,6 @@ input {
   justify-content: center; /* Centra los elementos horizontalmente (por ahora) */
   overflow: hidden; 
 }
-.login button p {
-  margin: 0; /* Asegura que no haya márgenes extra que desalineen el texto */
-  padding: 0;
-  white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
-  transition: transform 0.3s ease; /* Añade una transición suave al texto */
-}
 
 .login button::after {
   content: "arrow_forward"; /* El icono */
