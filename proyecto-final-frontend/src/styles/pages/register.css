@@ -1,0 +1,196 @@
+/* Asegúrate de que tu body base solo tenga el color de fondo */
+body {
+  background: #1e142c; /* Color de fondo general de la aplicación */
+  font-family: "Euclid Circular A", "Poppins"; /* Fuentes globales */
+  color: #f9f8fa; /* Color de texto global */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+   
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #a240ff;
+  --color-muted: #a392b3;
+}
+
+/*
+   Contenedor principal para centrar el login.
+   Ahora usa posicionamiento absoluto para superponerse sin afectar el flujo del documento,
+   permitiendo que el header y otros componentes se comporten normalmente.
+*/
+.register-container {
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.background-svg-container {
+  position: fixed; /* Fija el elemento en relación con la ventana del navegador. */
+  top: 0;
+  left: 0;
+  width: 100vw;  /* Ocupa el 100% del ancho del viewport. */
+  height: 100vh; /* Ocupa el 100% de la altura del viewport. */
+  z-index: -1; /* Envía al fondo, detrás de todos los demás contenidos. */
+  overflow: hidden; /* Oculta cualquier desbordamiento del SVG. */
+  background-color: #1e142c; /* Asegura un color de fondo si el SVG no cubre todo. */
+}
+
+.background-svg-container svg {
+  position: absolute; /* Permite posicionar el SVG dentro de su contenedor (el background-svg-container) */
+  top: 70%; /* Ajusta la posición vertical del origen de las ondas */
+  left: 50%;
+  translate: -50% 0; /* Centra horizontalmente */
+  width: 150vw; /* Ancho para las ondas */
+  height: 80vh; /* Altura de las ondas */
+  transform: scaleY(3) scaleX(2.25); /* Escala las ondas */
+  transform-origin: bottom;
+  box-sizing: border-box;
+  display: block;
+  pointer-events: none;
+}
+
+.register {
+  position: relative;
+  z-index: 1;
+  background: rgb(6 5 7 / 25%);
+  backdrop-filter: blur(38px);
+  box-shadow: 0 40px 30px rgb(0 0 0 / 10%);
+  border-radius: 40px;
+  padding: 50px 25px 40px; 
+  margin: 80px auto;
+  width: 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.register :is(h2) {
+  font-weight: 500;
+}
+
+.register h2 {
+  font-size: 22px;
+  margin: 0 0 8px;
+  margin-bottom: 25px; 
+}
+
+.register form {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  margin: 0 0 25px;
+}
+
+.register :is(input, button) {
+  height: 56px;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+}
+
+.register .textbox {
+  position: relative;
+}
+
+label,
+input {
+  transition: 0.3s;
+}
+
+.textbox label {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  translate: 0 -50%;
+  transform-origin: 0 50%;
+  pointer-events: none;
+  color: var(--color-muted);
+}
+
+.textbox input {
+  width: 100%;
+  padding-top: 10px;
+  margin-bottom: 5px;
+  background: #251930;
+  outline: none;
+  color: inherit;
+  box-shadow: 0 0 0 2px transparent;
+}
+
+.textbox input:focus {
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.textbox input:is(:focus, :not(:invalid)) ~ label {
+  scale: 0.725;
+  translate: 0 -100%;
+}
+
+.register button {
+  position: relative;
+  color: #f9f9f9;
+  font-size: 17px;
+  background: var(--color-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* Centra los elementos verticalmente */
+  justify-content: center; /* Centra los elementos horizontalmente (por ahora) */
+  overflow: hidden; 
+}
+
+.register button::after {
+  content: "arrow_forward"; /* El icono */
+  font-family: "Material Symbols Outlined"; /* Asegura la fuente del icono */
+  font-size: 22px;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Transiciones suaves */
+  
+  /* 🔥 CLAVE PARA LA POSICIÓN INICIAL DE LA FLECHA: */
+  position: absolute; /* Posicionamiento absoluto relativo al botón */
+  left: 55%; /* Inicialmente centrado con el texto */
+  top: 50%;
+  transform: translateX(10px) translateY(-50%); /* Ajuste inicial para ocultarla un poco a la derecha */
+  white-space: nowrap; /* Evita que el icono se rompa */
+}
+
+.register button:hover p {
+  transform: translateX(-10px); /* Mueve el texto a la izquierda al hacer hover */
+}
+
+.register button:hover::after {
+  opacity: 1; /* Hace visible la flecha */
+  transform: translateX(25px) translateY(-50%); /* Mueve la flecha a la derecha para que aparezca */
+}
+
+
+.register :is(button span, button p) {
+  transition: 0.3s;
+}
+
+
+.register button:hover p {
+  translate: -10px 0;
+}
+
+.register button:hover span {
+  opacity: 1;
+}
+
+.register a {
+  font-size: 15px;
+  color: var(--color-primary);
+}
+
+.register > p {
+  margin: 30px 0 0;
+  font-size: 14px;
+  color: var(--color-muted);
+}

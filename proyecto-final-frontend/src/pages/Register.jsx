@@ -1,6 +1,7 @@
 import { useState } from "react"
-// Se eliminó la importación de Layout, ya que no se pudo resolver la ruta.
+import { useNavigate, Link } from "react-router-dom";
 import { Layout } from "../components/Layout"
+import "../styles/pages/register.css"
 
 const Register = () => {
   const [username, setUsername] = useState("")
@@ -36,7 +37,7 @@ const Register = () => {
 
   return (
     <Layout>
-            <div className="background-svg-container">
+      <div className="background-svg-container">
         <svg
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +100,7 @@ const Register = () => {
       </div>
       <div className="register-conteiner">
         <div className="register">
-          <h2>Hola, bienvenido</h2>
+          <h2>Hola, Bienvenido!</h2>
           <form className="form" onSubmit={handleSubmit}>
             <div className="textbox">
               <input

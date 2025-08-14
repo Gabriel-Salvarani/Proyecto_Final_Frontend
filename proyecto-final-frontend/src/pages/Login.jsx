@@ -90,6 +90,11 @@ const Login = () => {
         <div className="login">
           <h2>Bienvenido de vuelta</h2>
           <h3>Preparate para comprar en tu tienda favorita</h3>
+          <div className="login-user">
+            <h4>Usuario de prueba:</h4>
+            <p>Usuario: johnd</p>
+            <p>Contraseña: m38rmF$</p>
+          </div>
           <form className="form" onSubmit={handleLogin}>
             <div className="textbox">
               <input

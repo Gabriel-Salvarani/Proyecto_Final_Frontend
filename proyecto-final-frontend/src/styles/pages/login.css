@@ -5,7 +5,8 @@ body {
   color: #f9f8fa; /* Color de texto global */
   margin: 0;
   padding: 0;
-  min-height: 100vh; /* Asegura que el body ocupe al menos el 100% del viewport */
+  min-height: 100vh;
+   
 }
 
 * {
@@ -61,7 +62,7 @@ body {
   border-radius: 40px;
   padding: 50px 25px 40px; 
   margin: 0 auto;
-  width: 380px;
+  width: 370px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,10 +70,6 @@ body {
   text-align: center;
 }
 
-.login img {
-  width: 74px;
-  margin: 0 0 20px;
-}
 
 .login :is(h2, h3) {
   font-weight: 500;
@@ -87,6 +84,49 @@ body {
   color: var(--color-muted);
   font-size: 12px;
   margin: 5px 5px 30px;
+}
+.login-user {
+  /* Reduce el espacio interno */
+  padding: 7px; 
+
+  /* Reduce el espacio externo */
+  margin: 10px auto; 
+
+  /* Ocupa solo el ancho necesario para el contenido */
+  width: fit-content; 
+
+  /* Centra el div horizontalmente dentro de su contenedor */
+  margin-left: auto;
+  margin-right: auto;
+  
+  /* Ajusta el tamaño de la fuente para que el texto sea más pequeño */
+  font-size: 0.8rem; 
+  border: 1px solid #ccc;
+  /* Añade bordes redondeados para que se vea mejor */
+  border-radius: 8px;
+  /* Ocupa solo el espacio necesario para su contenido */
+  width: fit-content;
+  /* Centra el texto */
+  text-align: center;
+  /* Usa un color de fondo para que se destaque del fondo principal */
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Asegúrate de que el contenedor de los párrafos tampoco tenga mucho margen */
+}
+
+.login-user p {
+  /* Elimina el margen por defecto de los párrafos */
+  margin: 0;
+  /* Espacia un poco los textos si es necesario */
+  line-height: 1.2;
+  color: #e0e0e0;
+}
+
+.login-user h4 {
+  /* Elimina el margen por defecto del h4 */
+  margin: 0;
+  /* Espacia un poco el título del texto */
+  margin-bottom: 5px;
+  color: #ffffff;
 }
 
 .login form {
