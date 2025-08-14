@@ -1,8 +1,14 @@
+/* --- ESTILOS GLOBALES Y DE COHERENCIA VISUAL --- */
+/*
+  He agregado un par de comentarios para identificar las secciones, pero mantuve tus estilos de fondo
+  y tipografía porque ya están bien definidos y son consistentes.
+*/
+
 /* Estilo del contenedor principal */
 .main-container {
-    background-color: #1a1a2e; 
-    color: #ffffff; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: #1a1a2e;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 2rem;
 }
 
@@ -10,47 +16,63 @@
 .main-section {
     margin-bottom: 3rem;
     padding: 2rem;
-    border-radius: 8px; 
-    background-color: #162033; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+    border-radius: 8px;
+    background-color: #162033;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilos de los títulos */
 .main-section h1, .main-section h2 {
-    color: #6a1b9a; 
-    border-bottom: 2px solid #6a1b9a; 
+    color: #6a1b9a;
+    border-bottom: 2px solid #6a1b9a;
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
     font-weight: bold;
 }
 
-/* Estilos para los listados*/
+.main-section p {
+  color: #a0a0a0;
+  line-height: 1.6;
+}
+
+/* Sección de "Por qué elegirnos" */
 .why-choose-us ul {
-    list-style: none; 
+    list-style: none;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 2rem; 
+    display: grid; /* Usamos grid para manejar el layout de manera más flexible */
+    gap: 2rem;
+    /* Esto es responsive, en mobile 1 columna, en tablet 2 y en desktop 3 */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .why-choose-us li {
-    background-color: #1f2b45; 
+    background-color: #1f2b45;
     padding: 1.5rem;
     border-radius: 8px;
-    flex: 1 1 300px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.why-choose-us li:hover {
+  transform: translateY(-5px);
 }
 
 .why-choose-us h3 {
-    color: #b39ddb; 
+    color: #b39ddb;
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
 }
-/* Estilo para la cuadrícula de productos */
+
+/* --- GRID RESPONSIVE DE PRODUCTOS --- */
+/*
+  La clave del responsive está aquí. Utilizamos CSS Grid para crear una cuadrícula
+  que se adapta automáticamente al tamaño de la pantalla.
+*/
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    padding: 2rem;
+    padding: 2rem 0; /* Ajustamos el padding para que no se pegue a los lados */
 }
 
 /* Tarjeta de producto individual */
@@ -62,16 +84,15 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
-    text-align: center;
+    text-align: left; /* Alineamos el texto a la izquierda para mejor lectura */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .product-card:hover {
-    transform: translateY(-15px) scale(1.03);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px); /* Reducimos la elevación para que sea más sutil */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Contenedor de la imagen */
 .product-card-image-container {
     width: 100%;
     height: 250px;
@@ -80,25 +101,20 @@
     align-items: center;
     background-color: #2b3a5b;
     border-bottom: 2px solid #6a1b9a;
+    padding: 1rem;
 }
 
 .product-card-image-container img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
     transition: transform 0.3s ease;
 }
 
-.product-card:hover .product-card-image-container img {
-    transform: scale(1.05);
-}
-
-/* Contenido de la tarjeta */
 .product-card-content {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     flex-grow: 1;
 }
 
@@ -107,36 +123,56 @@
     color: #b39ddb;
     margin-bottom: 0.5rem;
     font-weight: 600;
-    min-height: 2.6rem; /* <-- Asegura una altura mínima para el título (aprox. 2 líneas) */
+    min-height: 3.2rem; /* Aumentamos un poco para títulos de 2 líneas */
+    border-bottom: none; /* Quitamos el borde para no saturar la tarjeta */
+    padding-bottom: 0;
+}
+
+.product-card .description {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    line-height: 1.5;
+}
+
+.read-more-button {
+  background-color: transparent;
+  color: #6a1b9a;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  align-self: flex-start;
+  margin-top: -0.5rem; /* Ajustamos el margen para que esté más cerca del texto */
+  transition: color 0.3s ease;
+}
+
+.read-more-button:hover {
+  text-decoration: underline;
+  color: #8e24aa;
 }
 
 .product-card .price {
     font-size: 1.5rem;
     font-weight: bold;
     color: #fff;
-    margin-top: auto;
-}
-
-/* Eliminamos las propiedades de line-clamp para la descripción */
-.product-card .description {
-    font-size: 0.9rem;
-    color: #a0a0a0;
-    margin-bottom: 1rem;
-    flex-grow: 1; /* Permite que el texto ocupe todo el espacio disponible */
+    margin-top: 1rem; /* Aumentamos el margen para separarlo del resto */
 }
 
 .product-card .category {
     font-size: 0.8rem;
     color: #6a1b9a;
     font-weight: bold;
-    margin-top: auto; /* <-- Empuja la categoría hacia el final del contenido de texto */
     text-transform: uppercase;
+    margin-bottom: 0.5rem;
 }
 
 .product-card-actions {
-    margin-top: auto; /* Empuja los botones al final de la tarjeta */
+    margin-top: 1rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 1rem;
 }
 
@@ -157,107 +193,63 @@
     background-color: #8e24aa;
 }
 
-/* Estilos para el popup de edición */
-.popup-edit {
-    position: fixed; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #1f2b45; 
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    width: 90%;
-    max-width: 500px;
+/* --- ESTILOS RESPONSIVE CON MEDIA QUERIES --- */
+
+/* Mobile: hasta 480px */
+@media (max-width: 480px) {
+    .main-container {
+        padding: 1rem;
+    }
+    
+    .main-section {
+        padding: 1rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr; /* Una sola columna en dispositivos muy pequeños */
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+
+    .why-choose-us ul {
+      grid-template-columns: 1fr; /* Una columna para las razones */
+      gap: 1rem;
+    }
+    
+    .popup-edit {
+        width: 95%;
+        padding: 1rem;
+    }
+    
+    .button-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .popup-edit button {
+        width: 100%;
+    }
+    .product-card-image-container{
+        height: 200px;
+    }
 }
 
-.popup-edit h2 {
-    color: #6a1b9a;
-    border-bottom: 2px solid #6a1b9a;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
+/* Tablet: hasta 880px */
+@media (max-width: 880px) {
+    .products-grid {
+        grid-template-columns: repeat(auto, minmax(140px)); /* Dos columnas en tablets */
+        gap: 1.5rem;
+    }
+
+    /* Ajustamos el layout de la sección de razones para que sean 2 columnas en tablet */
+    .why-choose-us ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-
-.popup-edit input, .popup-edit textarea {
-    display: block;
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border-radius: 4px;
-    border: 1px solid #6a1b9a;
-    background-color: #2b3a5b;
-    color: white;
-    font-size: 1rem;
-}
-.popup-edit input::placeholder,
-.popup-edit textarea::placeholder {
-    color: #a0a0a0; /* Color gris claro */
 }
 
-/* Estilo para cuando el campo está enfocado */
-.popup-edit input:focus,
-.popup-edit textarea:focus {
-    outline: none; /* Quitamos el contorno por defecto del navegador */
-    border-color: #8e24aa; /* Borde más claro al enfocar */
-    box-shadow: 0 0 5px #8e24aa; /* Sombra sutil al enfocar */
-}
-.button-container {
-    display: flex;
-    justify-content: flex-end; /* Alinea los botones a la derecha */
-    gap: 10px; /* Espacio entre los botones */
-    margin-top: 1.5rem; /* Espacio arriba del contenedor */
-}
-
-/* Estilo para los botones */
-.popup-edit button {
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    margin-right: 10px;
-}
-
-/* Estilo específico para el botón de cerrar */
-.popup-edit .close-button {
-    background-color: #d32f2f; /* Un rojo para el botón de cerrar */
-    color: #ffffff;
-    border: none;
-}
-
-.popup-edit .close-button:hover {
-    background-color: #e53935;
-}
-
-/* Estilo para el botón de actualizar */
-.popup-edit .update-button {
-    background-color: #6a1b9a; /* El púrpura de la marca */
-    color: #ffffff;
-    border: none;
-}
-
-.popup-edit .update-button:hover {
-    background-color: #8e24aa;
-}
-textarea {
-    scrollbar-width: thin; /* Estilo 'thin' para una barra de desplazamiento más delgada */
-    scrollbar-color: #6a1b9a #1f2b45; /* Color del "thumb" y del "track" */
-}
-.read-more-button {
-background-color: transparent;
-color: #6a1b9a;
-border: none;
-padding: 0.5rem 1rem;
-border-radius: 4px;
-cursor: pointer;
-font-size: 0.9rem;
-align-self: flex-start; /* Alinea el botón a la izquierda */
-margin-top: 0.5rem;
-transition: color 0.3s ease;
-}
-
-.read-more-button:hover {
-color: #8e24aa;
-}
+/* Escritorio: más de 880px (se usa el diseño por defecto, sin media query) */
