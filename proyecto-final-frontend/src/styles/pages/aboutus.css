@@ -1,0 +1,43 @@
+/* AboutUs.css */
+
+.about-us-container {
+ padding: 2rem;
+ color: #ffffff;
+ background-color: transparent;
+}
+
+.about-us-container h1 {
+ color:  #a240ff;
+ font-size: 2.5rem;
+ margin-bottom: 1.5rem;
+ border-bottom: 2px solid #a350bf;
+ padding-bottom: 1rem;
+}
+
+.about-us-container section h2 {
+ color: rgb(220, 191, 255); /* Color de subtítulo ajustado para mayor coherencia */
+ font-size: 1.5rem; /* Tamaño de fuente ajustado */
+ margin-top: 2rem;
+ margin-bottom: 1rem;
+ background-color: rgba(30, 30, 60, 0.2); /* Fondo semitransparente similar al de los recuadros de la página principal */
+ padding: 1rem;
+ border-radius: 8px; /* Bordes redondeados para un estilo más suave */
+}
+
+.about-us-container p, .about-us-container li {
+ font-size: 1rem;
+ line-height: 1.6;
+}
+
+.about-us-container ul {
+ list-style-type: none;
+ padding-left: 0;
+}
+
+.about-us-container li {
+ background-color: rgba(255, 255, 255, 0.05);
+ border-left: 5px solid #a350bf;
+ border-radius: 5px;
+ padding: 1rem;
+ margin-bottom: 1rem;
+}
