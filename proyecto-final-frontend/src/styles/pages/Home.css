@@ -192,6 +192,23 @@
 .product-card-actions button:hover {
     background-color: #8e24aa;
 }
+.search-bar {
+  width: 50%;
+  padding: 0.7rem 1rem;
+  margin: 1rem 0 2rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+.no-products {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #bbb;
+  padding: 2rem 0;
+}
+
 
 /* --- ESTILOS RESPONSIVE CON MEDIA QUERIES --- */
 
