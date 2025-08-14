@@ -24,6 +24,7 @@ const Header = () => {
             {user ? (
               <>
                 <li><Link to="/">Inicio</Link></li>
+                <li><Link to="/aboutus">Sobre Nosotros</Link></li>
                 <li><Link to="/dashboard">Panel</Link></li>
                 <li><button onClick={handleLogout} className="logout-btn">Salir</button></li>
               </>

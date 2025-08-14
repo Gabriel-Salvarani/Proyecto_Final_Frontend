@@ -41,6 +41,7 @@ body{
   justify-content: flex-end;
   list-style: none;
   gap: 15px;
+  align-items: center;
 }
 
 .nav-list a {
