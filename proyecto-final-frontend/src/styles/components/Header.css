@@ -103,7 +103,7 @@ body{
 
 
 /* Responsive (ej. para mobile) */
-@media (max-width: 480px) {
+@media (max-width: 880px) {
 .menu-monitor {
   display: none !important;
 }
