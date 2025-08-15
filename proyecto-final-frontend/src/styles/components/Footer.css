@@ -1,3 +1,4 @@
+/* FOOTER BASE */
 .main-footer {
   background-color: #2d2e40;
   color: #f7f7f7;
@@ -20,7 +21,7 @@
 }
 
 .footer-about {
-  max-width: 350px; /* Limita el ancho del texto para que no sea una sola línea */
+  max-width: 350px;
 }
 
 .footer-title {
@@ -99,12 +100,13 @@
   text-decoration: underline;
 }
 
-/* Responsive: columnas en vertical en pantallas pequeñas */
-@media (max-width: 768px) {
+/* TABLETS: hasta 880px */
+/* TABLETS: hasta 880px */
+@media (max-width: 880px) {
   .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
   }
 
   .footer-about {
@@ -112,6 +114,40 @@
   }
 
   .footer-section {
-    min-width: 100%;
+    min-width: unset;
+  }
+
+  /* Aplica este estilo a la sección de Contáctanos */
+  .footer-contact {
+    grid-column: 1 / -1; /* Hace que ocupe las dos columnas */
+    text-align: center; /* Centra el texto dentro de la sección */
+  }
+
+  /* Asegura que los íconos sociales también estén centrados */
+  .footer-social {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* MÓVILES: hasta 480px */
+@media (max-width: 480px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+    display: flex;
+    gap: 15px;
+  }
+
+  .footer-nav li {
+    margin-bottom: 8px;
   }
 }
