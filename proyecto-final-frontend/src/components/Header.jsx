@@ -48,12 +48,14 @@ const Header = () => {
               {user ? (
                 <>
                   <li><Link to="/" onClick={closeMenu}>Inicio</Link></li>
+                  <li><Link to="/aboutus" onClick={closeMenu}>sobre nosotros</Link></li>
                   <li><Link to="/dashboard" onClick={closeMenu}>Panel</Link></li>
                   <li><button onClick={handleLogout} className="logout-btn">Salir</button></li>
                 </>
               ) : (
                 <>
-                  <li><Link to="/">Inicio</Link></li>
+                  <li><Link to="/" onClick={closeMenu}>Inicio</Link></li>
+                  <li><Link to="/aboutus" onClick={closeMenu}>sobre nosotros</Link></li>
                   <li><Link to="/login" onClick={closeMenu}>Inicia Sesión</Link></li>
                   <li><Link to="/registrate" onClick={closeMenu}>Registrate</Link></li>
                 </>
