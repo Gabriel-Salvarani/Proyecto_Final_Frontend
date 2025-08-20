@@ -1,39 +1,137 @@
-import { useState } from "react"
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Layout } from "../components/Layout"
-import "../styles/pages/register.css"
+import { Layout } from "../components/Layout";
+import "../styles/pages/register.css";
 
 const Register = () => {
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-  const [success, setSuccess] = useState("")
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  // Helper function to validate email format
+  const isValidEmail = (email) => {
+    // Basic regex for email validation
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  // Helper function to validate password strength
+  const isValidPassword = (password) => {
+    // Minimum 8 characters, at least one letter, one number, and one special character
+    const minLength = 8;
+    const hasLetter = /[a-zA-Z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (password.length < minLength) {
+      return "La contraseña debe tener al menos 8 caracteres.";
+    }
+    if (!hasLetter) {
+      return "La contraseña debe contener al menos una letra.";
+    }
+    if (!hasNumber) {
+      return "La contraseña debe contener al menos un número.";
+    }
+    if (!hasSpecialChar) {
+      return "La contraseña debe contener al menos un carácter especial.";
+    }
+    return ""; // Password is valid
+  };
+
+  const handleUsernameChange = (e) => {
+    const value = e.target.value;
+    setUsername(value);
+    if (value.trim() === "") {
+      setUsernameError("El nombre de usuario es requerido.");
+    } else {
+      setUsernameError("");
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    if (value.trim() === "") {
+      setEmailError("El email es requerido.");
+    } else if (!isValidEmail(value)) {
+      setEmailError("Ingresa un email válido.");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+    const errorMsg = isValidPassword(value);
+    setPasswordError(errorMsg);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    setError("")
-    setSuccess("")
+    e.preventDefault();
+    setSuccess("");
 
-    // Se corrigió la lógica de validación: debe ser !password para verificar si está vacío.
-    if (!username || !email || !password) {
-      setError("Debes completar todos los campos")
-      return
+    // Re-validate all fields on submit
+    let formIsValid = true;
+
+    if (username.trim() === "") {
+      setUsernameError("El nombre de usuario es requerido.");
+      formIsValid = false;
+    } else {
+      setUsernameError("");
+    }
+
+    if (email.trim() === "") {
+      setEmailError("El email es requerido.");
+      formIsValid = false;
+    } else if (!isValidEmail(email)) {
+      setEmailError("Ingresa un email válido.");
+      formIsValid = false;
+    } else {
+      setEmailError("");
+    }
+
+    const passwordValidationMessage = isValidPassword(password);
+    if (password.trim() === "") {
+      setPasswordError("La contraseña es requerida.");
+      formIsValid = false;
+    } else if (passwordValidationMessage) {
+      setPasswordError(passwordValidationMessage);
+      formIsValid = false;
+    } else {
+      setPasswordError("");
+    }
+
+    if (!formIsValid) {
+      return; // Stop form submission if there are errors
     }
 
     const newUser = {
       username,
       email,
-      password
-    }
+      password,
+    };
 
-    console.log(newUser)
-    setSuccess("Usuario registrado con éxito")
+    console.log("Nuevo usuario:", newUser);
+    setSuccess("Usuario registrado con éxito. Redirigiendo a la página");
 
-    setUsername("")
-    setEmail("")
-    setPassword("")
-  }
+    // Simulate API call and then redirect
+    setTimeout(() => {
+      setUsername("");
+      setEmail("");
+      setPassword("");
+      setUsernameError("");
+      setEmailError("");
+      setPasswordError("");
+      setSuccess("");
+      navigate("/login"); // Redirect to login page
+    }, 2000); // Redirect after 2 seconds
+  };
 
   return (
     <Layout>
@@ -98,7 +196,7 @@ const Register = () => {
           </g>
         </svg>
       </div>
-      <div className="register-conteiner">
+      <div className="register-conteiner"> {/* Typo: changed to register-container in CSS, keep this in mind */}
         <div className="register">
           <h2>Hola, Bienvenido!</h2>
           <form className="form" onSubmit={handleSubmit}>
@@ -106,52 +204,54 @@ const Register = () => {
               <input
                 id="username"
                 type="text"
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={handleUsernameChange} // Use specific change handler
+                onBlur={handleUsernameChange} // Validate on blur
                 value={username}
                 placeholder=" "
                 required
               />
               <label htmlFor="username">Usuario</label>
             </div>
+            {usernameError && <p className="error-message">{usernameError}</p>}
+
             <div className="textbox">
               <input
                 id="email"
                 type="email"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={handleEmailChange} // Use specific change handler
+                onBlur={handleEmailChange} // Validate on blur
                 value={email}
-                placeholder=" " 
+                placeholder=" "
                 required
               />
               <label htmlFor="email">Email</label>
             </div>
+            {emailError && <p className="error-message">{emailError}</p>}
+
             <div className="textbox">
               <input
                 id="password"
                 type="password"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handlePasswordChange} // Use specific change handler
+                onBlur={handlePasswordChange} // Validate on blur
                 value={password}
-                placeholder=" " 
+                placeholder=" "
                 required
               />
               <label htmlFor="password">Contraseña</label>
             </div>
-            <button type="submit">
-              Ingresar
-            </button>
+            {passwordError && <p className="error-message">{passwordError}</p>}
+
+            <button type="submit">Ingresar</button>
           </form>
           <p className="footer-register">
             ¿Ya tienes una cuenta? <Link to="/login">Inicia Sesión</Link>
           </p>
-          {
-            error && <p style={{ color: "red" }}>{error}</p>
-          }
-          {
-            success && <p style={{ color: "green" }}>{success}</p>
-          }
+          {success && <p className="success-message">{success}</p>}
         </div>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export {Register} // Exporta como default para facilitar la importación
+export { Register };
