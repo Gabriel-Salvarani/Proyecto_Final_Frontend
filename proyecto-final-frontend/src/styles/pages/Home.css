@@ -212,6 +212,94 @@
   color: #bbb;
   padding: 2rem 0;
 }
+/* --- ESTILOS PARA EL POPUP DE EDICIÓN --- */
+
+.popup-edit {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1f2b45;
+    color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.popup-edit h2 {
+    color: #b39ddb;
+    border-bottom: 2px solid #6a1b9a;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.popup-edit form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.popup-edit input,
+.popup-edit textarea {
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #3b4e70;
+    background-color: #2b3a5b;
+    color: #e0e0e0;
+    font-size: 1rem;
+}
+
+.popup-edit textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.popup-edit input::placeholder,
+.popup-edit textarea::placeholder {
+    color: #8c98b6;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.popup-edit button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1;
+}
+
+.popup-edit .update-button {
+    background-color: #6a1b9a;
+    color: white;
+}
+
+.popup-edit .update-button:hover {
+    background-color: #8e24aa;
+}
+
+.popup-edit .close-button {
+    background-color: #5c6c8e;
+    color: white;
+}
+
+.popup-edit .close-button:hover {
+    background-color: #7b8ea3;
+}
 
 
 /* --- ESTILOS RESPONSIVE CON MEDIA QUERIES --- */
